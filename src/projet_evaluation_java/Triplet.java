@@ -80,4 +80,25 @@ public class Triplet {
 		}
 		return false;
 	}
+	
+	public float distance(Triplet t) {
+		return (distanceEvenement(this.er,t.getEr()) + distanceEvenement(this.ec,t.getEr()) + IPOS(t.getIntervalle()) ) / Math.max(this.intervalle.getBs(), t.getIntervalle().getBs());
+	}
+	
+	public int distanceEvenement(String a, String b) {
+		if(a.equals(b))
+			return 0;
+		return 1;
+	}
+	
+	public float IPOS(Intervalle i) {
+		return Math.min(pos(this.intervalle.getBi(), i), pos(this.intervalle.getBs(),i));
+	}
+	
+	public float pos(int x, Intervalle i) {
+		if(x > i.getBi() && x < i.getBs()) {
+			return 0;
+		}
+		return Math.min(x-i.getBi(),x-i.getBs());
+	}
 }
