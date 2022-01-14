@@ -31,4 +31,11 @@ public class Intervalle {
 	public int getIntervalle_id() {
 		return intervalle_id;
 	}
+	
+	public boolean equals(Intervalle i) {
+		if(this.bi == i.getBi() && this.bs == i.getBs()) {
+			return true;
+		}
+		return false;
+	}
 }

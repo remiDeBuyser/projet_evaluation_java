@@ -10,12 +10,12 @@ public class Triplet {
 		super();
 		this.id_triplet = id_triplet;
 		String er_sub = er.substring(0, 2);
-		if(!er_sub.equals("In") || !er_sub.equals("RE") || !er_sub.equals("FE")) {
+		if(!er_sub.equals("In") && !er_sub.equals("RE") && !er_sub.equals("FE")) {
 			throw new Exception("Erreur évenement référence");
 		}
 		
 		String ec_sub = ec.substring(0, 2);
-		if(!ec_sub.equals("In") || !ec_sub.equals("RE") || !ec_sub.equals("FE")) {
+		if(!ec_sub.equals("In") && !ec_sub.equals("RE") && !ec_sub.equals("FE")) {
 			throw new Exception("Erreur évenement contrainte");
 		}
 		
@@ -28,12 +28,14 @@ public class Triplet {
 		super();
 		this.id_triplet = id_triplet;
 		String er_sub = er.substring(0, 2);
-		if(!er_sub.equals("In") || !er_sub.equals("RE") || !er_sub.equals("FE")) {
+
+		if(!er_sub.equals("In") && !er_sub.equals("RE") && !er_sub.equals("FE")) {
 			throw new Exception("Erreur évenement référence");
 		}
 		
 		String ec_sub = ec.substring(0, 2);
-		if(!ec_sub.equals("In") || !ec_sub.equals("RE") || !ec_sub.equals("FE")) {
+
+		if(!ec_sub.equals("In") && !ec_sub.equals("RE") && !ec_sub.equals("FE")) {
 			throw new Exception("Erreur évenement contrainte");
 		}
 		
@@ -68,5 +70,14 @@ public class Triplet {
 	
 	public int getId_triplet() {
 		return id_triplet;
+	}
+	
+	public boolean equals(Triplet t) {
+		if(this.er == t.getEr() && this.ec == t.getEc()) {
+			if((this.intervalle != null && t.getIntervalle() != null && this.intervalle.equals(t.getIntervalle())) || (this.intervalle == null && t.getIntervalle() == null)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
