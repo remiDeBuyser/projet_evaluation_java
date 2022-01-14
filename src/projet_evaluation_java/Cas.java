@@ -62,5 +62,22 @@ public class Cas {
 		
 		return somme/(3*size);
 	}
+	
+	
+	public String toString() {
+		String res  =  "Cas n°" + this.id + " avec un état de normal\n";
+		for (Triplet triplet : triplets) {
+			String ct = "";
+			if(triplet.getIntervalle() == null) {
+				ct+="nct";
+			}
+			else {
+				ct+= "[" + triplet.getIntervalle().getBi() + ", " + triplet.getIntervalle().getBs() +"]";
+			}
+			res += "("+triplet.getEr() + ", " + triplet.getEc() + ", "+ ct +")";
+		}
+				
+		return res;
+	}
 
 }

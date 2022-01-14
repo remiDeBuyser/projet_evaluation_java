@@ -51,7 +51,9 @@ public class Main {
 		}
 		System.out.println("\nDonnées enregistrées dans l'app\n");
 		
-
+		//for (Cas cas : liste_cas) {
+		//	System.out.println(cas);
+		//}
 	}
 
 }
