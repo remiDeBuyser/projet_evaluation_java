@@ -34,14 +34,14 @@ public class Cas {
 		return id;
 	}
 	
-	public float getSimilarity(Cas Pj) {
-		return 1 - distance(Pj);
+	public float getSimilarity(Cas Pj, int MAX) {
+		return 1 - distance(Pj, MAX);
 	}
 	
-	public float distance(Cas Pj) {
-		int dist = 0;
+	public float distance(Cas Pj, int MAX) {
+		float dist = 0;
 		int size = this.triplets.size();
-		
+		/*
 		if ( size != Pj.getTriplets().size() ) return 1;
 		else {
 			boolean equal = true;
@@ -53,11 +53,11 @@ public class Cas {
 			}
 			if (equal) return 0;
 			if (notequal) return 1;
-		}
+		}*/
 		
-		int somme = 0;
+		float somme = 0;
 		for (int i = 0; i<size; i++) {
-			somme += this.triplets.get(i).distance(Pj.getTriplets().get(i));
+			somme += this.triplets.get(i).distance(Pj.getTriplets().get(i), MAX);
 		}
 		
 		return somme/(3*size);

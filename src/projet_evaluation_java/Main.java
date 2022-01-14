@@ -10,7 +10,8 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		int i = 0;
-		File f = new File("reglesCN.txt");
+		int MAX = 0;
+		File f = new File("test_regles.txt");
 		String strCurrentLine;
 		
 		BufferedReader br = new BufferedReader(new FileReader(f));
@@ -29,6 +30,7 @@ public class Main {
 						try {
 							Intervalle intervalle = new Intervalle(id_intervalle++, Integer.parseInt(triplet.split(",")[2].substring(1)),Integer.parseInt(triplet.split(",")[3].substring(0,triplet.split(",")[3].length()-2)));
 							triplets.add(new Triplet(id_triplets, triplet.split(",")[0].substring(1), triplet.split(",")[1],intervalle));
+							if (Integer.parseInt(triplet.split(",")[3].substring(0,triplet.split(",")[3].length()-2)) > MAX) MAX = Integer.parseInt(triplet.split(",")[3].substring(0,triplet.split(",")[3].length()-2));
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -49,11 +51,15 @@ public class Main {
 				i++;
 			}
 		}
-		System.out.println("\nDonnées enregistrées dans l'app\n");
 		
-		//for (Cas cas : liste_cas) {
-		//	System.out.println(cas);
-		//}
+		System.out.println("\n Donnees enregistrees dans l'app\n");
+		
+		for (Cas cas : liste_cas) {
+			System.out.println(cas);
+		}
+		System.out.println();
+		System.out.println("Similartite : ");
+		System.out.println(liste_cas.get(0).getSimilarity(liste_cas.get(1),MAX));
 	}
 
 }

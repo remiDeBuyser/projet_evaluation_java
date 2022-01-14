@@ -81,9 +81,15 @@ public class Triplet {
 		return false;
 	}
 	
-	public float distance(Triplet t) {
-		return (distanceEvenement(this.er,t.getEr()) + distanceEvenement(this.ec,t.getEr()) + IPOS(t.getIntervalle()) ) / Math.max(this.intervalle.getBs(), t.getIntervalle().getBs());
+	public float distance(Triplet t, int MAX) {
+		float ipos;
+		if(this.intervalle == null && t.getIntervalle() == null) ipos = 0;
+		else if(this.intervalle == null || t.getIntervalle() == null) ipos = 1;
+		else ipos = IPOS(t.getIntervalle());
+
+		return (distanceEvenement(this.er,t.getEr()) + distanceEvenement(this.ec,t.getEr()) + ipos ) / MAX;
 	}
+	
 	
 	public int distanceEvenement(String a, String b) {
 		if(a.equals(b))
@@ -92,6 +98,9 @@ public class Triplet {
 	}
 	
 	public float IPOS(Intervalle i) {
+		if(this.intervalle == null || i == null) {
+			return 1;
+		}
 		return Math.min(pos(this.intervalle.getBi(), i), pos(this.intervalle.getBs(),i));
 	}
 	
