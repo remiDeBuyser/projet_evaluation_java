@@ -108,6 +108,6 @@ public class Triplet {
 		if(x > i.getBi() && x < i.getBs()) {
 			return 0;
 		}
-		return Math.min(x-i.getBi(),x-i.getBs());
+		return Math.min(Math.abs(x-i.getBi()),Math.abs(x-i.getBs()));
 	}
 }

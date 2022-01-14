@@ -41,8 +41,8 @@ public class Cas {
 	public float distance(Cas Pj, int MAX) {
 		float dist = 0;
 		int size = this.triplets.size();
-		/*
-		if ( size != Pj.getTriplets().size() ) return 1;
+		
+		if ( size != Pj.getTriplets().size() ) return 1;/*
 		else {
 			boolean equal = true;
 			boolean notequal = true;
