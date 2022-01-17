@@ -114,6 +114,9 @@ public class Triplet {
 	}
 	
 	public String toString() {
-		return this.er + " " + this.ec + " " + this.intervalle;
+		String intervalle = "nct";
+		if(this.intervalle != null)
+			intervalle = this.intervalle.toString();
+		return "("+this.er + ", " + this.ec + ", " + intervalle+")";
 	}
 }
