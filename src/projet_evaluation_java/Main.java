@@ -57,9 +57,7 @@ public class Main {
 		
 		System.out.println("\n Donnees enregistrees dans l'app\n");
 		
-		//for (Cas cas : liste_cas) {
-		//	System.out.println(cas);
-		//}
+
 		System.out.println("Veuillez entrer un nouveau cas : ");
 		Cas new_cas = null;
 		String new_line = sc.nextLine();
@@ -109,15 +107,29 @@ public class Main {
 			int k = 0;
 			for(Triplet triplet: cas.getTriplets()) {
 				if(triplet.getIntervalle() != null) {
+					String event = "";
 					for(int l = 0; l<cas.getTriplets().size();l++) {
 						if(k == l) {
+							event = cas.getTriplets().get(l).getEc();
+							// stocker le nom de levnt S_(cas.getTriplets().get(l).getEc())
 							writer.print("("+cas.getTriplets().get(l).getEr()+", S_" + cas.getTriplets().get(l).getEc() + ", ["+cas.getTriplets().get(l).getIntervalle().getBs()+","+cas.getTriplets().get(l).getIntervalle().getBs()+"])");
 						}
 						else {
-							writer.print(cas.getTriplets().get(l));
+							if(!event.equals("") && cas.getTriplets().get(l).toString().contains(event)) {
+								if(event.equals(cas.getTriplets().get(l).getEr())) {
+									writer.print("(S_"+event+", " + cas.getTriplets().get(l).getEc() + ", ["+cas.getTriplets().get(l).getIntervalle().getBs()+","+cas.getTriplets().get(l).getIntervalle().getBs()+"])");									
+								} else {
+									writer.print("("+cas.getTriplets().get(l).getEr()+", S_" + event + ", ["+cas.getTriplets().get(l).getIntervalle().getBs()+","+cas.getTriplets().get(l).getIntervalle().getBs()+"])");									
+								}
+							} else {
+								writer.print(cas.getTriplets().get(l));
+							}
+							// si on retrouve levnt manquant, alors on le remplace par S_(cas.getTriplets().get(l).getEc())
 						}
 						if(l != cas.getTriplets().size()-1) {
 							writer.print(" * ");
+						} else {
+							writer.print(" -> absence de " + event);
 						}
 					}
 					writer.println("\n");
@@ -128,5 +140,4 @@ public class Main {
 		}
 		writer.close();
 	}
-
 }
