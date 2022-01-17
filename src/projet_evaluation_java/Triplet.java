@@ -73,7 +73,7 @@ public class Triplet {
 	}
 	
 	public boolean equals(Triplet t) {
-		if(this.er == t.getEr() && this.ec == t.getEc()) {
+		if(this.er.equals(t.getEr()) && this.ec.equals(t.getEc())) {
 			if((this.intervalle != null && t.getIntervalle() != null && this.intervalle.equals(t.getIntervalle())) || (this.intervalle == null && t.getIntervalle() == null)) {
 				return true;
 			}
@@ -109,5 +109,9 @@ public class Triplet {
 			return 0;
 		}
 		return Math.min(Math.abs(x-i.getBi()),Math.abs(x-i.getBs()));
+	}
+	
+	public String toString() {
+		return this.er + " " + this.ec + " " + this.intervalle;
 	}
 }

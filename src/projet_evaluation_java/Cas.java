@@ -42,18 +42,22 @@ public class Cas {
 		float dist = 0;
 		int size = this.triplets.size();
 		
-		if ( size != Pj.getTriplets().size() ) return 1;/*
+		if ( size != Pj.getTriplets().size() ) return 1;
 		else {
 			boolean equal = true;
 			boolean notequal = true;
 			
 			for (int i = 0; i<size; i++) {
-				if (!this.triplets.get(i).equals(Pj.getTriplets().get(i))) equal = false;
-				if (this.triplets.get(i).equals(Pj.getTriplets().get(i))) notequal = false;
+				//System.out.println("ici" + this.triplets.get(i) + " " + Pj.getTriplets().get(i));
+				//System.out.println(this.triplets.get(i).equals(Pj.getTriplets().get(i)));
+				if (!this.triplets.get(i).equals(Pj.getTriplets().get(i))) 
+					equal = false;
+				if (this.triplets.get(i).equals(Pj.getTriplets().get(i))) 
+					notequal = false;
 			}
 			if (equal) return 0;
 			if (notequal) return 1;
-		}*/
+		}/**/
 		
 		float somme = 0;
 		for (int i = 0; i<size; i++) {

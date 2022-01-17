@@ -13,7 +13,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int i = 0;
 		int MAX = 0;
-		File f = new File("test_regles.txt");
+		File f = new File("reglesCN.txt");
 		String strCurrentLine;
 		
 		BufferedReader br = new BufferedReader(new FileReader(f));
@@ -65,7 +65,7 @@ public class Main {
 		if(!new_line.equals("")) {
 			for (String triplet : new_line.split(" \\* ")) {
 				triplet = triplet.replaceAll(" ", "");
-				System.out.println(triplet);
+				//System.out.println(triplet);
 				if(triplet.contains("[")) {
 					try {
 						Intervalle intervalle = new Intervalle(id_intervalle++, Integer.parseInt(triplet.split(",")[2].substring(1)),Integer.parseInt(triplet.split(",")[3].substring(0,triplet.split(",")[3].length()-2)));

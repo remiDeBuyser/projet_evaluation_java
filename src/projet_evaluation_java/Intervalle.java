@@ -38,4 +38,8 @@ public class Intervalle {
 		}
 		return false;
 	}
+	
+	public String toString() {
+		return "[" + this.bi + ", " + this.bs + "]";
+	}
 }
