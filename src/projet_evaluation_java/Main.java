@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -101,6 +102,31 @@ public class Main {
 				System.out.println("\tSimilarité : " + new_cas.getSimilarity(cas, MAX));
 			}			
 		}
+		PrintWriter writer = new PrintWriter("defaillants.txt","UTF-8");
+		
+		for(Cas cas : liste_cas) {
+			writer.println("Comportements défaillants du cas n°" +cas.getId());
+			int k = 0;
+			for(Triplet triplet: cas.getTriplets()) {
+				if(triplet.getIntervalle() != null) {
+					for(int l = 0; l<cas.getTriplets().size();l++) {
+						if(k == l) {
+							writer.print("("+cas.getTriplets().get(l).getEr()+", S_" + cas.getTriplets().get(l).getEc() + ", ["+cas.getTriplets().get(l).getIntervalle().getBs()+","+cas.getTriplets().get(l).getIntervalle().getBs()+"])");
+						}
+						else {
+							writer.print(cas.getTriplets().get(l));
+						}
+						if(l != cas.getTriplets().size()-1) {
+							writer.print(" * ");
+						}
+					}
+					writer.println("\n");
+				}
+				k++;
+			}
+			writer.println("\n");
+		}
+		writer.close();
 	}
 
 }
