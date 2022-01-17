@@ -79,15 +79,16 @@ public class Triplet {
 			}
 		}
 		return false;
-	}
+	} 
 	
 	public float distance(Triplet t, int MAX) {
 		float ipos;
 		if(this.intervalle == null && t.getIntervalle() == null) ipos = 0;
 		else if(this.intervalle == null || t.getIntervalle() == null) ipos = 1;
-		else ipos = IPOS(t.getIntervalle());
-
-		return (distanceEvenement(this.er,t.getEr()) + distanceEvenement(this.ec,t.getEr()) + ipos ) / MAX;
+		else {
+			ipos = IPOS(t.getIntervalle());
+		}
+		return distanceEvenement(this.er,t.getEr()) + distanceEvenement(this.ec,t.getEc()) + ipos  / MAX;
 	}
 	
 	
@@ -98,14 +99,15 @@ public class Triplet {
 	}
 	
 	public float IPOS(Intervalle i) {
-		if(this.intervalle == null || i == null) {
-			return 1;
+		if (this.getIntervalle().getBi() >= Math.max(this.getIntervalle().getBi(), i.getBi()) && this.getIntervalle().getBi() <= Math.min(this.getIntervalle().getBs(), i.getBs())) {
+		//if(this.intervalle == null || i == null) {
+			return 0;
 		}
 		return Math.min(pos(this.intervalle.getBi(), i), pos(this.intervalle.getBs(),i));
 	}
 	
 	public float pos(int x, Intervalle i) {
-		if(x > i.getBi() && x < i.getBs()) {
+		if(x >= i.getBi() && x <= i.getBs()) {
 			return 0;
 		}
 		return Math.min(Math.abs(x-i.getBi()),Math.abs(x-i.getBs()));
