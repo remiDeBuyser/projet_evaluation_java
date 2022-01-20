@@ -8,6 +8,10 @@ public class Etat {
 		this.id_etat = id_etat;
 	}
 
+	/**
+	 * Permet de retourner l'id de l'etat
+	 * @return
+	 */
 	public int getId_etat() {
 		return id_etat;
 	}
