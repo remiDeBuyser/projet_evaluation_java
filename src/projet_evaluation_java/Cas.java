@@ -96,10 +96,6 @@ public class Cas {
 		return sum/(3*size);
 	}
 	
-	/**
-	 * Permet de retourner un string représentant un cas 
-	 * @return String
-	 */
 	public String toString() {
 		String res  =  "Cas n°" + this.id + " avec un état de normal\n";
 		for (Triplet triplet : triplets) {
